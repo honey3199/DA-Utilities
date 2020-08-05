@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Registration</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="images/icons/logo.jpg" />
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<!--===============================================================================================-->
+</head>
+
+<body>
+
+
+	<div class="container-login100" style="background-image: url('images/da.jpeg');">
+		<div class="wrap-login100 p-l-55 p-r-55 p-t-80 p-b-30">
+			<form id="signupForm" class="login100-form">
+				<span style="margin-top: -50px;" class="login100-form-title p-b-37">
+					Sign Up
+				</span>
+
+				<div style="margin-top: -10px;" class="wrap-input100 validate-input m-b-20"
+					data-validate="Enter username">
+					<input class="input100" type="text" name="userName" placeholder="Username">
+					<span class="focus-input100"></span>
+				</div>
+
+
+				<div class="wrap-input100 validate-input m-b-20" data-validate="Enter  email">
+					<input class="input100" type="text" name="emailId" id="emailId" onblur="validateDomain()"
+						placeholder="Email">
+					<span class="focus-input100"></span>
+				</div>
+
+
+				<div class="wrap-input100 validate-input m-b-20" data-validate="Please Select Any Option">
+					<select Text="Select" id="batchId" class="input100" name="batchId" style="font-family: SourceSansPro-Bold;
+					font-size: 16px;
+					color: #4b2354;
+					line-height: 1.2;
+					display: block;
+					width: 100%;
+					height: 62px;
+					padding: 5px;
+					border: none;
+					background: transparent;">
+						<option value="">Select</option>
+                        <%for( var i=0;i<JSON.parse(data).length;i++){%>
+						<option value="<%=JSON.parse(data)[i].batchId%>"> <%=JSON.parse(data)[i].batchName%></option>
+					  <%}%>
+					</select>
+					<span class="focus-input100"></span>
+				</div>
+
+
+				<div class="wrap-input100 validate-input m-b-25" data-validate="Enter password">
+					<input class="input100" type="password" name="password" placeholder="Password">
+					<span class="focus-input100"></span>
+				</div>
+
+
+				<div class="wrap-inputmo validate-input m-b-25" data-validate="Enter MobileNumber">
+					<input class="input100 inputmo" type="text" id="txtMobile" maxlength="10"
+						onblur="MobileNumberChecker()" name="mobileNo" placeholder="MobileNumber">
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="container-login100-form-btn" style="display:none">
+					<button class="login100-form-btn">
+						Send OTP
+					</button>
+				</div>
+				<br>
+
+				<div class="wrap-inputmo validate-input m-b-25" data-validate="Enter OTP" style="display:none">
+					<input class="input100 inputmo" pattern="^[0-9]*$" type="text" id="txtMobile" maxlength="10"
+						name="OTP" placeholder="OTP">
+					<span class="focus-input100"></span>
+				</div>
+
+
+				<div class="container-login100-form-btn">
+					<button class="login100-form-btn" id="signupButton">
+						Sign Up
+					</button>
+				</div>
+
+				<br>
+				<div class="text-center">
+					<a href="Login" class="txt2 hov1">
+						Sign in
+					</a>
+				</div>
+			</form>
+
+
+		</div>
+	</div>
+	<script>
+
+		function validateDomain() {
+
+			var email = document.getElementById("emailadd").value;
+
+			var name = email.substring(0, email.lastIndexOf("@"));
+			var domain = email.substring(email.lastIndexOf("@") + 1);
+
+			if (domain != "daiict.ac.in") {
+
+				alert("Only Daiict Email Address Is Valid");
+				document.getElementById("emailadd").value = "";
+			}
+			else {
+				if (name >= 201912001 && name < 201912120) {
+					a = true;
+				}
+				else {
+					a = false
+				}
+				if (!a) {
+					alert("Please Enter Valid Email Address");
+
+				}
+
+			}
+		}
+	</script>
+	<script>
+		function MobileNumberChecker() {
+			var mobile = document.getElementById("txtMobile").value;
+			if (mobile.length > 0) {
+				if (mobile.length != 10) {
+					alert("Please Enter 10 Digit Mobile Number");
+				}
+			}
+		}
+	//var at = document.getElementById("email").value.indexOf("@");
+
+	</script>
+
+	<div id="dropDownSelect1"></div>
+
+	<!--===============================================================================================-->
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+	<!--===============================================================================================-->
+	<script src="vendor/animsition/js/animsition.min.js"></script>
+	<!--===============================================================================================-->
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+	<!--===============================================================================================-->
+	<script src="vendor/select2/select2.min.js"></script>
+	<!--===============================================================================================-->
+	<script src="vendor/daterangepicker/moment.min.js"></script>
+	<script src="vendor/daterangepicker/daterangepicker.js"></script>
+	<!--===============================================================================================-->
+	<script src="vendor/countdowntime/countdowntime.js"></script>
+	<!--===============================================================================================-->
+	<script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
